@@ -4,11 +4,11 @@ const bookSchema = mongoose.Schema({
     bookName: String,
     author: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'author'
+        ref: 'Author'
     },
     genre: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'genre'
+        ref: 'Genre'
     }
 })
 

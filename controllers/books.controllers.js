@@ -28,20 +28,29 @@ export default {
      },
      
     getBookById: (req, res) => {
-        Book.findById(req.params.bookId).then((book) => {
+        Book.findById(req.params.bookId)
+        .populate('author')
+        .populate('genre')
+        .then((book) => {
             res.json(book)
-        }).catch({"error": "Error updating book"})
+        }).catch({"error": "Error display book by id"})
      },
 
     getBooks: (req, res) => {
-        Book.find().then((book) => {
+        Book.find()
+        .populate('author')
+        .populate('genre')
+        .then((book) => {
             res.json(book)
-        }).catch({"error": "Error updating book"})
+        }).catch({"error": "Error display books"})
      },
 
     getBooksByGenre: (req, res) => { 
-        Book.find({genre :req.params.genreId}).then((book) => {
+        Book.find({genre: req.params.genreId})
+        .populate('author')
+        .populate('genre')
+        .then((book) => {
             res.json(book)
-        }).catch({"error": "Error updating book"})
+        }).catch({"error": "Error display book by genre"})
     },
 }
